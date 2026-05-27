@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bone: #FDF8EC;
+  --ink: #1A1A1A;
+  --body: #4A4A4A;
+  --sumi: #2E2E2E;
+  --sakura: #E0581B;
+  --matcha: #B47C1F;
+  --indigo: #7A4B1E;
+  --washi: #F5F0E8;
+  --card: #F2EDE5;
+  --border: #E3DDD2;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  }
+  ::selection {
+    background: var(--sakura);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-noto-serif), Georgia, serif;
+  }
+  .font-mono {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+  }
+  .grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  /* Soft scalloped texture (warm, subtle) */
+  .seigaiha {
+    background-image:
+      radial-gradient(circle at 50% 100%, transparent 36%, rgba(122,75,30,0.05) 36%, rgba(122,75,30,0.05) 38%, transparent 38%),
+      radial-gradient(circle at 50% 100%, transparent 46%, rgba(122,75,30,0.04) 46%, rgba(122,75,30,0.04) 48%, transparent 48%),
+      radial-gradient(circle at 50% 100%, transparent 56%, rgba(122,75,30,0.03) 56%, rgba(122,75,30,0.03) 58%, transparent 58%);
+    background-size: 60px 30px;
+  }
+  /* Geometric diamond lattice */
+  .asanoha {
+    background-image:
+      linear-gradient(30deg, rgba(224,88,27,0.05) 12%, transparent 12.5%),
+      linear-gradient(150deg, rgba(224,88,27,0.05) 12%, transparent 12.5%),
+      linear-gradient(210deg, rgba(224,88,27,0.04) 12%, transparent 12.5%),
+      linear-gradient(330deg, rgba(224,88,27,0.04) 12%, transparent 12.5%);
+    background-size: 40px 69px;
+  }
+  .hairline {
+    background-image: linear-gradient(to right, rgba(26,26,26,0.15), rgba(26,26,26,0.15));
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+    background-position: 0 100%;
+  }
+  /* Brush stroke divider */
+  .brush-stroke {
+    position: relative;
+  }
+  .brush-stroke::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--ink);
+    margin-top: 1rem;
+    border-radius: 2px;
+    opacity: 0.7;
+  }
+  /* Vertical accent text (decorative, leftover from template scaffold) */
+  .vertical-jp {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: 0.3em;
+  }
+  .marker {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--sakura);
+  }
+}
