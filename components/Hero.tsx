@@ -59,40 +59,31 @@ export function Hero() {
   return (
     <section ref={sectionRef} className="relative h-[200vh] bg-bone md:h-[300vh]">
       <div className="sticky top-0 h-[100dvh] overflow-hidden">
-        {/* Video container — full bleed mobile, right-shifted desktop */}
-        <div className="absolute inset-0 md:left-[25%]">
+        {/* Video container — full bleed */}
+        <div className="absolute inset-0">
           <img
             src="/hero-poster.webp"
             alt=""
             aria-hidden="true"
-            className={`pointer-events-none absolute inset-x-0 top-[4%] z-[1] h-[58%] w-full object-cover transition-opacity duration-700 md:inset-0 md:h-full md:object-contain ${videoReady ? "opacity-0" : "opacity-100"}`}
+            className={`pointer-events-none absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-700 ${videoReady ? "opacity-0" : "opacity-100"}`}
           />
           <video
             ref={videoRef}
-            className="absolute inset-x-0 top-[4%] h-[58%] w-full object-cover md:inset-0 md:h-full md:object-contain"
+            className="absolute inset-0 h-full w-full object-cover"
             muted
             playsInline
             preload="auto"
             disableRemotePlayback
             {...({ "webkit-playsinline": "true", "x5-playsinline": "true" } as Record<string, string>)}
           >
-            <source src="/hero-scrub.webm" type="video/webm" />
+            <source src="/hero-scrub.mp4" type="video/mp4" />
           </video>
 
-          {/* Mobile-only fades — top blends video edge into bg, bottom adds readability behind text */}
-          <div className="md:hidden pointer-events-none absolute inset-x-0 top-0 z-10 h-[14%] bg-gradient-to-b from-bone via-bone/80 to-transparent" />
-          <div className="md:hidden pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[50%] bg-gradient-to-b from-transparent via-bone/70 to-bone" />
-
-          {/* Soft fades — desktop only */}
-          <div className="hidden md:block pointer-events-none absolute inset-x-0 bottom-0 z-10 h-72 bg-gradient-to-b from-transparent via-bone/70 to-bone" />
-          <div className="hidden md:block pointer-events-none absolute inset-x-0 top-0 z-10 h-72 bg-gradient-to-t from-transparent via-bone/70 to-bone" />
-          <div className="hidden md:block pointer-events-none absolute inset-y-0 left-0 z-10 w-40 bg-gradient-to-r from-bone via-bone/40 to-transparent" />
-          <div className="hidden md:block pointer-events-none absolute inset-y-0 right-0 z-10 w-40 bg-gradient-to-l from-bone via-bone/40 to-transparent" />
         </div>
 
         {/* Vertical accent — desktop only */}
         <div className="hidden md:flex pointer-events-none absolute left-10 top-1/2 z-20 -translate-y-1/2">
-          <span className="vertical-jp text-[11px] tracking-[0.5em] text-sakura-600/50 font-mono uppercase">
+          <span className="vertical-jp text-[11px] tracking-[0.5em] text-bone/70 font-mono uppercase drop-shadow-md">
             Curry House · Eppelheim
           </span>
         </div>
@@ -100,22 +91,22 @@ export function Hero() {
         {/* Content overlay — bottom-left */}
         <div className="pointer-events-none absolute inset-0 z-20 flex">
           <div className="pointer-events-auto flex w-full max-w-[1400px] items-end px-6 pb-16 md:px-10 md:pb-28 lg:px-14">
-            <div className="max-w-xl">
+            <div className="max-w-xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
               {/* Eyebrow */}
-              <p className="text-xs font-mono uppercase tracking-[0.3em] text-sakura-600 mb-4">
+              <p className="hidden md:block text-xs font-mono uppercase tracking-[0.3em] text-sakura-300 mb-4">
                 Indische Küche · Eppelheim
               </p>
 
-              <h1 className="font-display text-[40px] leading-[0.95] tracking-tight text-ink sm:text-[52px] md:text-[64px] lg:text-[72px]">
-                Curry, Tandoor<br />und alles dazwischen.
+              <h1 className="font-display text-[40px] leading-[0.95] tracking-tight text-bone sm:text-[52px] md:text-[64px] lg:text-[72px]">
+                Curry, Tandoor<span className="hidden md:inline"><br />& mehr.</span>
               </h1>
 
-              <p className="mt-4 font-display text-base italic text-body/85 md:text-lg">
-                Frisch aus dem Tandoor, sorgfältig gewürzt, im Herzen von Eppelheim.
+              <p className="hidden md:block mt-4 font-display text-base italic text-bone/85 md:text-lg">
+                Frisch aus dem Tandoor, sorgfältig gewürzt, in Eppelheim.
               </p>
 
               {/* Brush stroke divider */}
-              <div className="mt-5 h-[3px] w-14 bg-sakura-500 rounded-full" />
+              <div className="hidden md:block mt-5 h-[3px] w-14 bg-sakura-400 rounded-full" />
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <a
@@ -126,7 +117,7 @@ export function Hero() {
                 </a>
                 <a
                   href="#carta"
-                  className="border border-ink/40 bg-bone/70 backdrop-blur px-7 py-3.5 text-[13px] font-medium uppercase tracking-wider text-ink transition-colors hover:border-ink hover:bg-ink hover:text-bone"
+                  className="border border-bone/40 bg-bone/10 backdrop-blur px-7 py-3.5 text-[13px] font-medium uppercase tracking-wider text-bone transition-colors hover:bg-bone/20"
                 >
                   Zur Speisekarte
                 </a>

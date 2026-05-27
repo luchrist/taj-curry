@@ -46,7 +46,7 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[13px] tracking-wide text-body transition-colors hover:text-sakura-600"
+                className={`text-[13px] tracking-wide transition-colors hover:text-sakura-600 ${scrolled ? "text-body" : "text-bone drop-shadow-md"}`}
               >
                 {link.label}
               </a>
@@ -65,7 +65,7 @@ export function Navbar() {
             className="flex h-10 w-10 items-center justify-center md:hidden"
             aria-label="Menu"
           >
-            {mobileOpen ? <X size={24} /> : <List size={24} />}
+            {mobileOpen ? <X size={24} /> : <List size={24} className={scrolled ? "text-body" : "text-bone drop-shadow-md"} />}
           </button>
         </nav>
       </header>
